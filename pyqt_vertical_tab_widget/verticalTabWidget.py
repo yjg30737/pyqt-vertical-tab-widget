@@ -39,14 +39,3 @@ class VerticalTabWidget(QTabWidget):
         super().__init__()
         self.setTabBar(TabBar(self))
         self.setTabPosition(QTabWidget.West)
-
-
-if __name__ == "__main__":
-    import sys
-
-    app = QApplication(sys.argv)
-    myWindow = VerticalTabWidget()
-    myWindow.addTab(QWidget(), 'abc')
-    myWindow.addTab(QWidget(), 'def')
-    myWindow.show()
-    sys.exit(app.exec_())
