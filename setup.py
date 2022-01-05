@@ -7,7 +7,7 @@ setup(
     author_email='yjg30737@gmail.com',
     license='MIT',
     packages=find_packages(),
-    description='PyQt Vertical Tab Widget (text is horizontal)',
+    description='PyQt vertical tab widget (text is horizontal)',
     url='https://github.com/yjg30737/pyqt-vertical-tab-widget.git',
     install_requires=[
         'PyQt5>=5.8'
