@@ -1,5 +1,5 @@
 # pyqt-vertical-tab-widget
-PyQt Vertical Tab Widget (text is horizontal)
+PyQt vertical tab widget (text is horizontal)
 
 ## Requirements
 PyQt5 >= 5.8
