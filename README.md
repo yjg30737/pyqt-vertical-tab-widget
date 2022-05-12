@@ -5,7 +5,7 @@ PyQt vertical tab widget (text is horizontal)
 PyQt5 >= 5.8
 
 ## Setup
-```pip3 install git+https://github.com/yjg30737/pyqt-vertical-tab-widget.git --upgrade```
+`python -m pip install pyqt-vertical-tab-widget`
 
 ## Example
 Code Example
