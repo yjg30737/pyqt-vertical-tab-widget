@@ -1,4 +1,4 @@
-from PyQt5.QtCore import QRect, QPoint
+from PyQt5.QtCore import QRect, QPoint, Qt
 from PyQt5.QtWidgets import QTabWidget, QTabBar, QStylePainter, QStyleOptionTab, QStyle, QProxyStyle, qApp, \
     QApplication, QWidget
 
@@ -8,6 +8,7 @@ class TabBar(QTabBar):
     def tabSizeHint(self, index):
         s = QTabBar.tabSizeHint(self, index)
         s.transpose()
+        s.scale(s.width() * 2, s.height() * 2, Qt.KeepAspectRatio)
         return s
 
     # Make text visible adequately
@@ -32,7 +33,6 @@ class TabBar(QTabBar):
             painter.translate(center*-1)
             painter.drawControl(QStyle.CE_TabBarTabLabel, style_option)
             painter.restore()
-
 
 class VerticalTabWidget(QTabWidget):
     def __init__(self):
