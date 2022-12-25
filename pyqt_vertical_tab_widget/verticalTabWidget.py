@@ -4,10 +4,13 @@ from PyQt5.QtWidgets import QTabWidget, QTabBar, QStylePainter, QStyleOptionTab,
 
 
 class TabBar(QTabBar):
-    # Transpose the size (if v size is bigger than h size, change each other)
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
     def tabSizeHint(self, index):
         s = QTabBar.tabSizeHint(self, index)
-        s.transpose()
+        if s.width() < s.height():
+            s.transpose()
         s.scale(s.width() * 2, s.height() * 2, Qt.KeepAspectRatio)
         return s
 
@@ -21,9 +24,9 @@ class TabBar(QTabBar):
             painter.drawControl(QStyle.CE_TabBarTabShape, style_option)
             painter.save()
 
-            size = style_option.rect.size()
-            size.transpose()
-            rect = QRect(QPoint(), size)
+            s = style_option.rect.size()
+            s.scale(s.width() * 2, s.height() * 2, Qt.KeepAspectRatio)
+            rect = QRect(QPoint(), s)
             rect.moveCenter(style_option.rect.center())
             style_option.rect = rect
 
@@ -34,8 +37,11 @@ class TabBar(QTabBar):
             painter.drawControl(QStyle.CE_TabBarTabLabel, style_option)
             painter.restore()
 
+
 class VerticalTabWidget(QTabWidget):
     def __init__(self):
         super().__init__()
         self.setTabBar(TabBar(self))
         self.setTabPosition(QTabWidget.West)
+
+    # def setTabSize(self, width, height):
